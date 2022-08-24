@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/edit-state";
 import Logo from "../../public/Telesis_Logo_black_negativ_space.svg";
+import { motion, useScroll } from "framer-motion";
 import {
   useDisclosure,
   Button,
@@ -38,13 +39,15 @@ export const Navbar = (props) => {
   const bg = bgColor(props.props.data.post?.category);
   const textcol = textColor(props.props.data.post?.category);
 
+  const { scrollYProgress } = useScroll();
+
   return (
     <Box pos={"sticky"} top={0} zIndex={10}>
       <Flex justify="space-between" align={"center"}>
         <Link href="/">
-          <Box fontSize={"xl"} flexGrow={1} pb={'.5rem'}>
+          <Box fontSize={"xl"} flexGrow={1} pb={".5rem"}>
             <Img
-              bg={'whitecuba.100'}
+              bg={"whitecuba.100"}
               quality="100"
               width={"160"}
               height={"80"}
@@ -56,17 +59,32 @@ export const Navbar = (props) => {
         </Link>
         <HStack flexGrow={1} justify={"right"}>
           <Link href="/about/">
-            <Button rounded={"none"} bg={bg} color={textcol}>
+            <Button
+              rounded={"none"}
+              bg={bg}
+              color={textcol}
+              _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
+            >
               About Us
             </Button>
           </Link>
           <Link href="/contact/">
-            <Button rounded={"none"} bg={bg} color={textcol}>
+            <Button
+              rounded={"none"}
+              bg={bg}
+              color={textcol}
+              _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
+            >
               Contact
             </Button>
           </Link>
           <Link href="/our_mission/">
-            <Button rounded={"none"} bg={bg} color={textcol}>
+            <Button
+              rounded={"none"}
+              bg={bg}
+              color={textcol}
+              _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
+            >
               Our Mission
             </Button>
           </Link>
@@ -83,6 +101,7 @@ export const Navbar = (props) => {
                   rounded={"none"}
                   bg={bg}
                   color={textcol}
+                  _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
                 >
                   Field of Work
                 </AccordionButton>
@@ -109,6 +128,10 @@ export const Navbar = (props) => {
                         }
                       >
                         <Button
+                          _hover={{
+                            color: "blacksuite.100",
+                            bg: "whitecuba.100",
+                          }}
                           p={"2rem"}
                           fontWeight={"light"}
                           rounded={"none"}
@@ -133,6 +156,7 @@ export const Navbar = (props) => {
                   fontWeight={"bold"}
                   bg={bg}
                   color={textcol}
+                  _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
                 >
                   Topics
                 </AccordionButton>
@@ -149,6 +173,7 @@ export const Navbar = (props) => {
                             textAlign={"center"}
                             size={"sm"}
                             bg={bg}
+                            _hover={{ color: "blacksuite.100", bg: "whitecuba.100" }}
                           >
                             {tag}
                           </AccordionButton>

@@ -1167,7 +1167,7 @@ export type PageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'Page', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', title?: string | null, subtitle?: string | null, image?: string | null, position?: { __typename: 'PageBlocksHeroPosition', text?: { __typename: 'PageBlocksHeroPositionText', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null, image?: { __typename: 'PageBlocksHeroPositionImage', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null } | null } | { __typename: 'PageBlocksCta', title?: string | null, subtitle?: string | null, button?: { __typename: 'PageBlocksCtaButton', label?: string | null, href?: string | null } | null } | { __typename: 'PageBlocksQuote', quote?: string | null, author?: string | null, x?: number | null, width?: number | null } | { __typename: 'PageBlocksGallery', gallery?: Array<{ __typename: 'PageBlocksGalleryGallery', image?: string | null, alt?: string | null, x?: number | null, width?: number | null, height?: number | null } | null> | null } | { __typename: 'PageBlocksFact', fact?: Array<{ __typename: 'PageBlocksFactFact', headline?: string | null, subheadline?: string | null, x?: number | null, width?: number | null } | null> | null } | { __typename: 'PageBlocksLogos', headline?: string | null, width?: number | null, logos?: Array<{ __typename: 'PageBlocksLogosLogos', logo?: string | null, alt?: string | null, href?: string | null } | null> | null } | { __typename: 'PageBlocksCard', cards?: Array<{ __typename: 'PageBlocksCardCards', title?: string | null, body?: any | null, href?: string | null, x?: number | null, width?: number | null, colors?: string | null } | null> | null } | { __typename: 'PageBlocksFeatured', category?: string | null, size?: number | null, colors?: string | null } | { __typename: 'PageBlocksRichtext', body?: any | null } | null> | null } | null } | null> | null } };
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'Page', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, blocks?: Array<{ __typename: 'PageBlocksHero', title?: string | null, subtitle?: string | null, image?: string | null, position?: { __typename: 'PageBlocksHeroPosition', text?: { __typename: 'PageBlocksHeroPositionText', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null, image?: { __typename: 'PageBlocksHeroPositionImage', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null } | null } | { __typename: 'PageBlocksCta', title?: string | null, subtitle?: string | null, button?: { __typename: 'PageBlocksCtaButton', label?: string | null, href?: string | null } | null } | { __typename: 'PageBlocksQuote', quote?: string | null, author?: string | null, x?: number | null, width?: number | null } | { __typename: 'PageBlocksGallery', gallery?: Array<{ __typename: 'PageBlocksGalleryGallery', image?: string | null, alt?: string | null, x?: number | null, width?: number | null, height?: number | null } | null> | null } | { __typename: 'PageBlocksFact', fact?: Array<{ __typename: 'PageBlocksFactFact', headline?: string | null, subheadline?: string | null, x?: number | null, width?: number | null } | null> | null } | { __typename: 'PageBlocksLogos', headline?: string | null, width?: number | null, logos?: Array<{ __typename: 'PageBlocksLogosLogos', logo?: string | null, alt?: string | null, href?: string | null } | null> | null } | { __typename: 'PageBlocksCard', cards?: Array<{ __typename: 'PageBlocksCardCards', title?: string | null, body?: any | null, href?: string | null, x?: number | null, width?: number | null, colors?: string | null } | null> | null } | { __typename: 'PageBlocksFeatured', category?: string | null, size?: number | null, colors?: string | null } | { __typename: 'PageBlocksRichtext', body?: any | null } | null> | null } | null } | null> | null } };
 
 export type PostQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -1186,7 +1186,7 @@ export type PostConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'Post', id: string, title?: string | null, category?: string | null, tags?: Array<string | null> | null, date?: string | null, description?: string | null, size?: number | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, text?: Array<{ __typename: 'PostTextRichtext', body?: any | null } | null> | null, blocks?: Array<{ __typename: 'PostBlocksHero', title?: string | null, subtitle?: string | null, image?: string | null, position?: { __typename: 'PostBlocksHeroPosition', text?: { __typename: 'PostBlocksHeroPositionText', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null, image?: { __typename: 'PostBlocksHeroPositionImage', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null } | null } | { __typename: 'PostBlocksCta', title?: string | null, subtitle?: string | null, button?: { __typename: 'PostBlocksCtaButton', label?: string | null, href?: string | null } | null } | { __typename: 'PostBlocksQuote', quote?: string | null, author?: string | null, x?: number | null, width?: number | null } | { __typename: 'PostBlocksGallery', gallery?: Array<{ __typename: 'PostBlocksGalleryGallery', image?: string | null, alt?: string | null, x?: number | null, width?: number | null, height?: number | null } | null> | null } | { __typename: 'PostBlocksFact', fact?: Array<{ __typename: 'PostBlocksFactFact', headline?: string | null, subheadline?: string | null, x?: number | null, width?: number | null } | null> | null } | { __typename: 'PostBlocksLogos', headline?: string | null, width?: number | null, logos?: Array<{ __typename: 'PostBlocksLogosLogos', logo?: string | null, alt?: string | null, href?: string | null } | null> | null } | { __typename: 'PostBlocksCard', cards?: Array<{ __typename: 'PostBlocksCardCards', title?: string | null, body?: any | null, href?: string | null, x?: number | null, width?: number | null, colors?: string | null } | null> | null } | { __typename: 'PostBlocksFeatured', category?: string | null, size?: number | null, colors?: string | null } | { __typename: 'PostBlocksRichtext', body?: any | null } | null> | null } | null } | null> | null } };
+export type PostConnectionQuery = { __typename?: 'Query', postConnection: { __typename?: 'PostConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'Post', id: string, title?: string | null, category?: string | null, tags?: Array<string | null> | null, date?: string | null, description?: string | null, size?: number | null, image?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, text?: Array<{ __typename: 'PostTextRichtext', body?: any | null } | null> | null, blocks?: Array<{ __typename: 'PostBlocksHero', title?: string | null, subtitle?: string | null, image?: string | null, position?: { __typename: 'PostBlocksHeroPosition', text?: { __typename: 'PostBlocksHeroPositionText', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null, image?: { __typename: 'PostBlocksHeroPositionImage', x?: number | null, width?: number | null, y?: number | null, height?: number | null } | null } | null } | { __typename: 'PostBlocksCta', title?: string | null, subtitle?: string | null, button?: { __typename: 'PostBlocksCtaButton', label?: string | null, href?: string | null } | null } | { __typename: 'PostBlocksQuote', quote?: string | null, author?: string | null, x?: number | null, width?: number | null } | { __typename: 'PostBlocksGallery', gallery?: Array<{ __typename: 'PostBlocksGalleryGallery', image?: string | null, alt?: string | null, x?: number | null, width?: number | null, height?: number | null } | null> | null } | { __typename: 'PostBlocksFact', fact?: Array<{ __typename: 'PostBlocksFactFact', headline?: string | null, subheadline?: string | null, x?: number | null, width?: number | null } | null> | null } | { __typename: 'PostBlocksLogos', headline?: string | null, width?: number | null, logos?: Array<{ __typename: 'PostBlocksLogosLogos', logo?: string | null, alt?: string | null, href?: string | null } | null> | null } | { __typename: 'PostBlocksCard', cards?: Array<{ __typename: 'PostBlocksCardCards', title?: string | null, body?: any | null, href?: string | null, x?: number | null, width?: number | null, colors?: string | null } | null> | null } | { __typename: 'PostBlocksFeatured', category?: string | null, size?: number | null, colors?: string | null } | { __typename: 'PostBlocksRichtext', body?: any | null } | null> | null } | null } | null> | null } };
 
 export type MapQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -1205,7 +1205,7 @@ export type MapConnectionQueryVariables = Exact<{
 }>;
 
 
-export type MapConnectionQuery = { __typename?: 'Query', mapConnection: { __typename?: 'MapConnection', totalCount: number, edges?: Array<{ __typename?: 'MapConnectionEdges', node?: { __typename?: 'Map', id: string, date?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type MapConnectionQuery = { __typename?: 'Query', mapConnection: { __typename?: 'MapConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'MapConnectionEdges', node?: { __typename?: 'Map', id: string, date?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const PagePartsFragmentDoc = gql`
     fragment PageParts on Page {
@@ -1437,6 +1437,12 @@ export const PageConnectionDocument = gql`
     sort: $sort
     filter: $filter
   ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -1485,6 +1491,12 @@ export const PostConnectionDocument = gql`
     sort: $sort
     filter: $filter
   ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
@@ -1533,6 +1545,12 @@ export const MapConnectionDocument = gql`
     sort: $sort
     filter: $filter
   ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
     totalCount
     edges {
       node {
