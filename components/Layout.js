@@ -17,7 +17,7 @@ export const Layout = (props) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar/>
+      <Navbar props={props}/>
       <main>{props.children}</main>
     </Box>
   );

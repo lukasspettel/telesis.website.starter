@@ -1,7 +1,14 @@
 import { staticRequest } from "tinacms";
+import Link from "next/link";
 import { Layout } from "../../components/Layout";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/edit-state";
+import {
+  bgColor,
+  category,
+  categoryHref,
+  textColor,
+} from "../../components/Theme";
 import {
   Button,
   Box,
@@ -159,29 +166,31 @@ export default function Home(props) {
 
   const posts = data.postConnection?.edges;
   return (
-    <Layout>
+    <Layout {...props}>
       <Box>
+        <Heading pt={'6rem'} fontSize={"6xl"} textAlign={"left"}>
+          {data.post?.title}
+        </Heading>
         <Box>
-          <Button
-            p={"1rem"}
-            textAlign={"center"}
-            color={"whitecuba.100"}
-            mb={"1.5rem"}
-            rounded="full"
-            size={"lg"}
-            bg={"orangebiz.100"}
-          >
-            {data.post?.category}
-          </Button>
-          <Flex  wrap={"wrap"} gap={25}>
+          <Flex wrap={"wrap"} align={"end"} pb={"2rem"} pt={"2rem"} gap={15}>
+            <Link href={categoryHref(data.post?.category)}>
+              <Button
+                p={"2rem"}
+                rounded={"none"}
+                color={textColor(data.post?.category)}
+                bg={bgColor(data.post?.category)}
+                fontSize={"1xl"}
+              >
+                {data.post?.category}
+              </Button>
+            </Link>
             {data.post?.tags.map((tag) => (
               <Box>
                 <Button
                   p={"1rem"}
-                  color={"whitecuba.100"}
-                  rounded={"full"}
+                  color={'whitecuba.100'}
+                  rounded={"none"}
                   textAlign={"center"}
-                  mb={"1.5rem"}
                   size={"sm"}
                   bg={"blacksuite.100"}
                 >
@@ -191,7 +200,6 @@ export default function Home(props) {
             ))}
           </Flex>
         </Box>
-        <Heading fontSize={"6xl"}>{data.post?.title}</Heading>
       </Box>
       <Divider mb={"3rem"} mt={"1.5rem"} />
       <Grid
@@ -275,11 +283,7 @@ export default function Home(props) {
               case "PostBlocksFeatured":
                 return (
                   <>
-                    <FeaturedPostBlock
-                      i={i}
-                      block={block}
-                      posts={posts}
-                    />
+                    <FeaturedPostBlock i={i} block={block} posts={posts} />
                   </>
                 );
               case "PostBlocksCard":

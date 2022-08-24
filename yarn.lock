@@ -1385,6 +1385,11 @@
     "@floating-ui/dom" "^0.1.8"
     use-isomorphic-layout-effect "^1.1.1"
 
+"@fontsource/abeezee@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/abeezee/-/abeezee-4.5.9.tgz#76a98bb24cce87cb8205a613af1a3a06d557c743"
+  integrity sha512-J//IhGnZnKyCc3YHAxo3xIAgQunX4FXce4EWpsFKeip+vzhcXOeLRysfh/cd7rUfgPWhkkCx7fFBnfncfIGF7g==
+
 "@fontsource/dejavu-mono@^4.5.4":
   version "4.5.4"
   resolved "https://registry.npmjs.org/@fontsource/dejavu-mono/-/dejavu-mono-4.5.4.tgz"

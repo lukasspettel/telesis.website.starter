@@ -131,7 +131,7 @@ export default function Home(props) {
   });
 
   return (
-    <Layout>
+    <Layout {... props}>
       {data.page
         ? data.page.blocks?.map((block, i) => {
             switch (block.__typename) {

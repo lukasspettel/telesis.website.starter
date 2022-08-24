@@ -23,12 +23,12 @@ export default function Home(props) {
     variables: {},
     data: props.data,
   });
-  const postsList = data.postConnection.edges;
+  const postsList = data.postConnection?.edges;
   return (
-    <Layout>
+    <Layout {... props}>
       <h1>Posts</h1>
       <div>
-        {postsList.map((post) => (
+        {postsList?.map((post) => (
           <div key={post.node.id}>
             <Link href={`/posts/${post.node._sys.filename}`}>
               <a>{post.node._sys.filename}</a>

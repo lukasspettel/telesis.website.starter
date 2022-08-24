@@ -18,8 +18,74 @@ export const colors = [
   "purplesience.100",
   "yellowinsurance.100",
   "greenschool.100",
-  
 ];
+
+export const categoryHref = (item) => {
+  if (item === category[0]){
+    return '/geo_tech/'
+  }
+  if (item === category[1]){
+    return "/data_science/"
+  }
+  if (item === category[2]){
+    return "/knowledge_management/"
+  }
+  if (item === category[3]){
+    return "/ecosystem_service/"
+  }
+  if (item === category[4]){
+    return "/integral_technical_planning/"
+  }
+  if (item === category[5]){
+    return "/sustainable_cities_and_living_spaces/"
+  }
+  return '/'
+};
+
+export const textColor = (item) => {
+  if (item === category[0]){
+    return "whitecuba.100"
+  }
+  if (item === category[1]){
+    return "whitecuba.100"
+  }
+  if (item === category[2]){
+    return "blacksuite.100"
+  }
+  if (item === category[3]){
+    return "blacksuite.100"
+  }
+  if (item === category[4]){
+    return "whitecuba.100"
+  }
+  if (item === category[5]){
+    return "whitecuba.100"
+  }
+  return "whitecuba.100"
+}
+
+export const bgColor = (item) => {
+  if (item === category[0]){
+    return "blacksuite.100"
+  }
+  if (item === category[1]){
+    return "purplesience.100"
+  }
+  if (item === category[2]){
+    return "yellowinsurance.100"
+  }
+  if (item === category[3]){
+    return "greenschool.100"
+  }
+  if (item === category[4]){
+    return "orangebiz.100"
+  }
+  if (item === category[5]){
+    return "greylondon.100"
+  }
+  return "blacksuite.100"
+}
+
 
 // "Liberata, serif", "Space Grotesk, sans-serif","DejaVu Mono, monospace",
 export const Theme = extendTheme({
