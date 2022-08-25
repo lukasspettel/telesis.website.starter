@@ -17,7 +17,7 @@ const HeroBlock: TinaTemplate = {
   label: "Hero",
   ui: {
     itemProps: (item) => {
-      return { label: "Hero - " + item?.title };
+      return { label: "Hero // " + item?.title };
     },
   },
   fields: [
@@ -136,7 +136,7 @@ const CallToActionBlock: TinaTemplate = {
   label: "Call to Action",
   ui: {
     itemProps: (item) => {
-      return { label: "CTA - " + item?.title };
+      return { label: "CTA // " + item?.title };
     },
   },
   fields: [

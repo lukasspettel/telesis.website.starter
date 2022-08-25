@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTina } from "tinacms/dist/edit-state";
 import Logo from "../../public/Telesis_Logo_black_negativ_space.svg";
-import { motion} from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import {
   useDisclosure,
   Button,
@@ -39,6 +39,7 @@ export const Navbar = (props) => {
   const bg = bgColor(props.props.data.post?.category);
   const textcol = textColor(props.props.data.post?.category);
 
+  const { scrollYProgress } = useScroll();
 
   return (
     <Box pos={"sticky"} top={0} zIndex={10}>
