@@ -1,6 +1,10 @@
 import { staticRequest } from "tinacms";
 import { Layout } from "../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
+import { Box, Flex, Heading, Text, chakra } from "@chakra-ui/react";
+import { bgColor, category, categoryHref, textColor } from "../components/Theme";
+import Link from "next/link";
+import Image from "next/image";
 
 // Block Import
 import { HeroBlock } from "../components/blocks/HeroBlock";
@@ -122,6 +126,11 @@ const query = `query getPage($relativePath: String!) {
   }
 }`;
 
+const Img = chakra(Image, {
+  shouldForwardProp: (prop) =>
+    ["width", "height", "src", "alt", "layout"].includes(prop),
+});
+
 export default function Home(props) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
@@ -130,8 +139,10 @@ export default function Home(props) {
     data: props.data,
   });
 
+
+  const posts = data.postConnection?.edges;
   return (
-    <Layout {... props}>
+    <Layout {...props}>
       {data.page
         ? data.page.blocks?.map((block, i) => {
             switch (block.__typename) {
@@ -174,7 +185,7 @@ export default function Home(props) {
               case "PageBlocksFeatured":
                 return (
                   <>
-                    <FeaturedPostBlock i={i} block={block} />
+                    <FeaturedPostBlock i={i} block={block} posts={posts}/>
                   </>
                 );
               case "PageBlocksCard":

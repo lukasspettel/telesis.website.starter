@@ -11,6 +11,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { bgColor, category, categoryHref, textColor } from "../Theme";
 
 const Img = chakra(Image, {
   shouldForwardProp: (prop) =>
@@ -20,11 +21,11 @@ const Img = chakra(Image, {
 export const FeaturedPostBlock = ({ block, posts, id, i }) => {
   return (
     <Box mt={"3rem"} mb={"3rem"}>
-      <Box pl={"1.5rem"}>
+      <Box>
         <Button
           p={"2rem"}
           rounded={"none"}
-          color={"whitecuba.100"}
+          color={textColor(block.category)}
           bg={block.colors}
           fontSize={"3xl"}
         >
@@ -34,13 +35,13 @@ export const FeaturedPostBlock = ({ block, posts, id, i }) => {
       <Grid
         pt={"1.5rem"}
         templateColumns={`repeat(${block.size}, 1fr)`}
-        pos={"relative"}
+        gap={25}
       >
         {posts?.map((post) => {
           return (
             <>
               {post.node.category == `${block.category}` && (
-                <Box pos={"relative"} p={"1.5rem"}>
+                <Box pos={"relative"}>
                   {post.node.image && (
                     <GridItem cursor={"pointer"}>
                       <Link href={`/posts/${post.node._sys?.filename ?? " "}`}>
@@ -51,7 +52,7 @@ export const FeaturedPostBlock = ({ block, posts, id, i }) => {
                           zIndex={0}
                         >
                           <Img
-                            bg={"whitecuba.100"}
+                            bg={textColor(block.category)}
                             rounded={"1.5rem"}
                             quality="100"
                             width={"100%"}

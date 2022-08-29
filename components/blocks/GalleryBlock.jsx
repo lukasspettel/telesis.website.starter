@@ -6,10 +6,11 @@ const Img = chakra(Image, {
     ["width", "height", "src", "alt", "layout"].includes(prop),
 });
 
+import { bgColor, category, categoryHref, textColor } from "../Theme";
 
 // TO SOLVE: Image height throws error when value is empty when you retype stuff.
 
-export const GalleryBlock = ({ block, id, i }) => {
+export const GalleryBlock = ({ block, category, id, i }) => {
   return (
     <Grid
       templateColumns={"repeat(6, 1fr)"}
@@ -22,8 +23,9 @@ export const GalleryBlock = ({ block, id, i }) => {
       {block.gallery?.map((item, i) => {
         return (
           <GridItem colStart={item?.x} colSpan={item?.width} zIndex={-i}>
+           {console.log(category)}
             {item.image && (   
-              <Box p={"1.5rem"} bg={"orangebiz.100"} display={'block'}>
+              <Box p={"1.5rem"} bg={bgColor(category)} display={'block'}>
                 <Img
                   rounded={"1.5rem"}
                   quality="100"

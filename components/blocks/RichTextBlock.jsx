@@ -1,6 +1,6 @@
 import { chakra, Box, Grid, GridItem, Heading, Text, Divider } from "@chakra-ui/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { Image } from "@chakra-ui/react";
+import Image from "next/image";
 import Link from "next/link";
 
 const components = {
@@ -27,19 +27,23 @@ const components = {
     return <Divider mb={'1.5rem'}{... props}/>
   },
   p: (props) => {
-    return <Text my={2} fontSize='lg' letterSpacing={'wide'} textAlign={'justify'}{...props} />;
+    return <Text my={2} fontSize='md' letterSpacing={'wide'} textAlign={'justify'}{...props} />;
   },
   img: (props) => {
+
+    const Img = chakra(Image, {
+      shouldForwardProp: (prop) =>
+        ["width", "height", "src", "alt", "layout", "fill"].includes(prop),
+    });
     return (
-      <Image
+      <Img
         mx="auto"
-        src={props.url}
+        src={props.url ? props.url : '/'}
         height={"500"}
         width="100%"
         alt={props.alt}
         objectFit="cover"
         quality="100"
-        placeholder='empty'
       />
     );
   },
@@ -48,9 +52,7 @@ const components = {
 export const RichtextBlock = ({ block, id, i }) => {
   return (
     <Box >
-      <Divider mb={'1.5rem'}/>
       <TinaMarkdown content={block.body} components={components}/>
-      <Divider mb={'1.5rem'} mt={'1.5rem'}/>
     </Box>
   );
 };

@@ -380,7 +380,6 @@ const CardBlock: TinaTemplate = {
         {
           name: "body",
           label: "Body",
-          isBody: true,
           type: "rich-text",
         },
         {
@@ -416,7 +415,6 @@ const RichtextBlock: TinaTemplate = {
     {
       name: "body",
       label: "Body",
-      isBody: true,
       type: "rich-text",
     },
   ],

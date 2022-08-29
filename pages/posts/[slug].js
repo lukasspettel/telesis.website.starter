@@ -19,6 +19,7 @@ import {
   Heading,
   Text,
   Divider,
+  Spacer,
 } from "@chakra-ui/react";
 // Block Import
 import { HeroBlock } from "../../components/blocks/HeroBlock";
@@ -164,15 +165,17 @@ export default function Home(props) {
     data: props.data,
   });
 
+  
   const posts = data.postConnection?.edges;
   return (
     <Layout {...props}>
-      <Box>
-        <Heading pt={'6rem'} fontSize={"6xl"} textAlign={"left"}>
-          {data.post?.title}
-        </Heading>
+      <Heading pt={"4rem"} fontSize={"6xl"} textAlign={"left"}>
+        {data.post?.title}
+      </Heading>
+      <Divider mb={"1.5rem"} mt={"1rem"} />
+      <Flex gap={25} align={"end"} justify={"flex-start"}>
         <Box>
-          <Flex wrap={"wrap"} align={"end"} pb={"2rem"} pt={"2rem"} gap={15}>
+          <Flex wrap={"wrap"} align={"end"} justify={"flex-start"} gap={15}>
             <Link href={categoryHref(data.post?.category)}>
               <Button
                 p={"2rem"}
@@ -188,7 +191,7 @@ export default function Home(props) {
               <Box>
                 <Button
                   p={"1rem"}
-                  color={'whitecuba.100'}
+                  color={"whitecuba.100"}
                   rounded={"none"}
                   textAlign={"center"}
                   size={"sm"}
@@ -200,7 +203,33 @@ export default function Home(props) {
             ))}
           </Flex>
         </Box>
-      </Box>
+        <Box w={"15%"}>
+          {data.post?.image && (
+            <Box
+              p={"1.5rem"}
+              bg={bgColor(data.post?.category)}
+              display={"block"}
+            >
+              <Img
+                bg={textColor(data.post?.category)}
+                rounded={"1.5rem"}
+                quality="100"
+                width={"100%"}
+                height={"100%"}
+                layout={"responsive"}
+                objectFit="cover"
+                src={data.post.image}
+                alt={data.post.title}
+              />
+            </Box>
+          )}
+        </Box>
+        <Box w={"50%"}>
+          <Text fontSize="sm" fontWeight={"thin"} textAlign={"justify"}>
+            {data.post?.description}
+          </Text>
+        </Box>
+      </Flex>
       <Divider mb={"3rem"} mt={"1.5rem"} />
       <Grid
         autoRows={"auto"}
@@ -208,38 +237,6 @@ export default function Home(props) {
         templateColumns={`repeat(${data.post?.size}, 1fr)`}
         gap={5}
       >
-        <GridItem>
-          <Box>
-            <Text fontSize="lg" letterSpacing={"wide"} textAlign={"justify"}>
-              {data.post?.description}
-            </Text>
-          </Box>
-        </GridItem>
-        {data.post?.image && (
-          <GridItem>
-            <Img
-              quality="100"
-              width={"100%"}
-              height={"100%"}
-              layout={"responsive"}
-              objectFit="cover"
-              src={data.post.image}
-              alt={data.post.title}
-            />
-          </GridItem>
-        )}
-        {data.post
-          ? data.post.text?.map((text, i) => {
-              switch (text.__typename) {
-                case "PostTextRichtext":
-                  return (
-                    <GridItem>
-                      <RichtextBlock i={i} block={text} />
-                    </GridItem>
-                  );
-              }
-            })
-          : null}
       </Grid>
       {data.post
         ? data.post.blocks?.map((block, i) => {
@@ -247,7 +244,11 @@ export default function Home(props) {
               case "PostBlocksHero":
                 return (
                   <>
-                    <HeroBlock i={i} block={block} />
+                    <HeroBlock
+                      i={i}
+                      block={block}
+                      category={data.post?.category}
+                    />
                   </>
                 );
               case "PostBlocksCta":
@@ -265,7 +266,11 @@ export default function Home(props) {
               case "PostBlocksGallery":
                 return (
                   <>
-                    <GalleryBlock i={i} block={block} />
+                    <GalleryBlock
+                      i={i}
+                      block={block}
+                      category={`${data.post?.category}`}
+                    />
                   </>
                 );
               case "PostBlocksFact":
@@ -292,9 +297,83 @@ export default function Home(props) {
                     <CardBlock i={i} block={block} />
                   </>
                 );
+                case "PostTextRichtext":
+                  return (
+                    <>
+                      <RichtextBlock i={i} block={text} />
+                    </>
+                  );
             }
           })
         : null}
+      <Box>
+        <Flex wrap={"wrap"}>
+          <Box pt={"2rem"}>
+            <Button
+              p={"2rem"}
+              rounded={"none"}
+              bg={bgColor(data.post?.category)}
+              color={textColor(data.post?.category)}
+              fontSize={"3xl"}
+            >
+              Related Articles
+            </Button>
+            <Flex wrap={"wrap"}>
+              {posts?.map((node) => {
+                return (
+                  <Box>
+                    {node.node.category === data.post?.category && (
+                      <>
+                        <Box
+                          flexGrow={1}
+                          minW={"15rem"}
+                          mt={"0.5rem"}
+                          mb={"1.5rem"}
+                          mr={"1.5rem"}
+                        >
+                          <Text
+                            fontSize={"md"}
+                            fontWeight={"bolder"}
+                            margin={"auto"}
+                            bg={bgColor(data.post?.category)}
+                            color={textColor(data.post?.category)}
+                            pt={"0.5rem"}
+                            pb={"0.5rem"}
+                            pl={"0.5rem"}
+                          >
+                            {node.node.title}
+                          </Text>
+                          <Link href={`${node.node._sys.filename}`}>
+                            <Box
+                              margin={"auto"}
+                              mt={"0.5rem"}
+                              p={"1.5rem"}
+                              bg={bgColor(data.post?.category)}
+                              display={"block"}
+                            >
+                              <Img
+                                rounded={"1.5rem"}
+                                bg={textColor(node.node?.category)}
+                                quality="100"
+                                width={"100%"}
+                                height={"100%"}
+                                layout={"responsive"}
+                                objectFit="cover"
+                                src={node.node.image}
+                                alt={node.node.title}
+                              />
+                            </Box>
+                          </Link>
+                        </Box>
+                      </>
+                    )}
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
     </Layout>
   );
 }
